@@ -202,7 +202,7 @@ else:
 
 total_holiday_price = holiday_cost(car_price, flight_price, hotel_price)
 
-print(f"For your trip to {location}, it will cost a grandtotal of £{total_holiday_price}. The breakdown of costs are as follows:")
+print(f"For your trip to {place}, it will cost a grandtotal of £{total_holiday_price}. The breakdown of costs are as follows:")
 print("__" * 30)
 print(f"Flights: £{flight_price} in {desired_class}\nAccomodation: £{hotel_price} and the {hotel_name}")
 if rental_choice == "y": # Only is shown if the user opts to rent a car
