@@ -1,5 +1,5 @@
 """ hotel.py pseudo code
-
+test
 calculate user's total holiday cost
 plane cost, hotel cost, & rental cost (potentially give options)
 city_flight options
