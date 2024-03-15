@@ -24,9 +24,9 @@ def plane_cost(vol, f_class):
     total_flight = vol * f_class
     return(total_flight)
 
-def car_rental(rental_days):
+def car_rental(rental_days, car):
 
-    total_car = rental_days * 250
+    total_car = rental_days * car
     return(total_car)
 
 def holiday_cost(hotel_cost, plane_cost, car_rental):
@@ -153,6 +153,29 @@ else:
 
     if rental_choice == "y":
 
+        car_make = input("\nPlease enter the number corresponding with the desired rental car:\n\n(1) Fiat 500 - £16/day\n(2) Lamborghini Urus - £150/day\n(3) Nissan Ultima - £40/day\n\n")
+
+        while not car_make.isdigit(): # ensures the number is a digit
+            car_make = input("\nPlease enter a valid number corresponding with the desired rental car:\n\n(1) Fiat 500 - £16/day\n(2) Lamborghini Urus - £150/day\n(3) Nissan Ultima - £40/day\n\n")
+
+        else:
+            car_make = int(car_make)
+
+            while car_make < 0 or car_make > 3: # Ensures the number is within the correct range
+                car_make = int(input("\nPlease enter a valid number corresponding with the desired rental car. A reminder, the options are:\n\n(1) Fiat 500 - £16/day\n(2) Lamborghini Urus - £150/day\n(3) Nissan Ultima - £40/day\n\n"))
+            else:
+                if car_make == 1:
+                    car_price = 16
+                    car = "Fiat 500"           
+
+                elif car_make == 2:
+                    car_price = 150
+                    car = "Lamborghini Urus"
+                    
+                elif car_make == 3:
+                    car_price = 40
+                    car = "Nissan Ultima"
+
         rental_days = input("\nHow many days will you be hiring a car for: ")
 
         while not rental_days.isdigit():
@@ -165,12 +188,12 @@ else:
                 rental_days = int(input("\nPlease enter a number greater than or equal to 0: "))
 
             else:
-               car_price = car_rental(rental_days)
-               print(car_price)
+               car_cost = car_rental(rental_days, car_price)
+               print(car_cost)
 
     else:
-        car_price = car_rental(0)
-        print(car_price)
+        car_cost = car_rental(0, 0)
+        print(car_cost)
 
 
 # ----------------------------------------------------
@@ -183,5 +206,5 @@ print(f"For your trip to {location}, it will cost a grandtotal of £{total_holid
 print("__" * 30)
 print(f"Flights: £{flight_price} in {desired_class}\nAccomodation: £{hotel_price} and the {hotel_name}")
 if rental_choice == "y": # Only is shown if the user opts to rent a car
-    print(f"Car Rental: £{car_price}")
+    print(f"Car Rental: £{car_cost} to drive {car} for {rental_days} days at £{car_price} per day.")
 print("--" * 30)
